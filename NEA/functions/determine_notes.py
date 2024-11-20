@@ -2,18 +2,7 @@ from classes.Constants import *
 import numpy as np
 
 def closest_note_from_frequency(frequency: int) -> tuple[int]:
-    '''
-    short description
-
-    longer description
-
-    Inputs
-    ------
-
-    Returns
-    -------
-    
-    '''
+ 
     closest_note = min(NOTE_FREQUENCIES, key=lambda note: abs(NOTE_FREQUENCIES[note] - frequency))
     diff = frequency - NOTE_FREQUENCIES[closest_note]
     return closest_note, diff
