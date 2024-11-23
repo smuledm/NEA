@@ -20,7 +20,7 @@ def predict_notes(song, starts, actual_notes=None, plot_fft_indices=[]):
         freqs, magnitudes = frequency_spectrum(note_segment, sample_rate)
         peak_freq = freqs[np.argmax(magnitudes)]
         
-        predicted_note = classify_note_attempt_1(peak_freq)
+        predicted_note = closest_note_from_frequency(peak_freq)
         predicted_notes.append(predicted_note)
         
         print(f"Start time: {start_ms} ms")
@@ -34,7 +34,6 @@ def predict_notes(song, starts, actual_notes=None, plot_fft_indices=[]):
             plt.xlabel("Frequency (Hz)")
             plt.ylabel("Magnitude")
             plt.show()
-    
     return predicted_notes
 
 def calculate_distance(predicted_notes, actual_notes):
@@ -115,16 +114,6 @@ def main(file, note_file=None, note_starts_file=None, plot_starts=False, plot_ff
     starts = predict_note_starts(song, plot_starts, actual_starts)
     predicted_notes = predict_notes(song, starts, actual_notes, plot_fft_indices)
     
-    print("")
-    if actual_notes:
-        print("Actual Notes")
-        print(actual_notes)
-    print("Predicted Notes")
-    print(predicted_notes)
-    
-    if actual_notes:
-        lev_distance = calculate_distance(predicted_notes, actual_notes)
-        print("Levenshtein distance: {}/{}".format(lev_distance, len(actual_notes)))
     
     # Show the GUI with predicted notes
    # app = GuitarFretboardGUI(predicted_notes)
@@ -132,5 +121,6 @@ def main(file, note_file=None, note_starts_file=None, plot_starts=False, plot_ff
 
 record_gui = RecordGUI()
 record_gui.mainloop()
+
 # After recording, process the recorded audio
 main("recording.wav", plot_starts=True)
