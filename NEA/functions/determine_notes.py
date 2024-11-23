@@ -13,6 +13,7 @@ def closest_note_from_frequency(frequency: int) -> tuple[int]:
     -------
     
     '''
+ 
     closest_note = min(NOTE_FREQUENCIES, key=lambda note: abs(NOTE_FREQUENCIES[note] - frequency))
     return closest_note
 
