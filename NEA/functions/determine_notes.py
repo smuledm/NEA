@@ -4,7 +4,7 @@ import numpy as np
 def closest_note_from_frequency(frequency: int) -> tuple[int]:
     '''
 
-    longer description
+    description
     Gives the closest note from the frequency aquired by the FFT
 
     Inputs
