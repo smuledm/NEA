@@ -5,12 +5,13 @@ def closest_note_from_frequency(frequency: int) -> tuple[int]:
     '''
 
     longer description
+    Gives the closest note from the frequency aquired by the FFT
 
     Inputs
-    ------
+    Takes the frequencies of the notes played
 
     Returns
-    -------
+    A tuple of the frequencies
     
     '''
  
