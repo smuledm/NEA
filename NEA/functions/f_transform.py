@@ -29,7 +29,7 @@ def frequency_spectrum(sample, max_frequency=4500):
     # Get the frequency spectrum
 
 
-    # Plot the spectrum
+    # Plots the spectrum
     plt.figure(figsize=(10, 6))
     plt.plot(freq_array, freq_magnitude, color='blue')
     plt.title("Frequency Spectrum of Audio Sample", fontsize=14)
